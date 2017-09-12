@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import {FormControl, Validators} from '@angular/forms';
+
 import { LoginService } from './shared/login.service';
 import {Login} from "./shared/login";
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
+  ngOnInit() { }
   login: Login = new Login();
 
   constructor(
@@ -19,7 +22,9 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit() { }
+  registrationFormControl = new FormControl('', [
+    Validators.required
+  ]);
 
   save() {
     var result = this.loginService.authenticate(this.login);

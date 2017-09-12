@@ -1,16 +1,24 @@
-<div class="container">
-  <h2>Secretaria de Gestão Patrimonial</h2>
-  <h4>Segunda via de boletos (BB)</h4>
-  <form (ngSubmit)="save()">
-    <div>
-      <label for="name">CPF</label>
-      <input type="text" id="registration_cpf" required [(ngModel)]="login.registration" name='registration'>
+<div class="login-form--content">
+  <div class="row">
+    <div class="col-12 login-form--header">
+      <div class="login-form--title">
+        <h4>Sistema de Gestão Patrimonial</h4>
+      </div>
+      <div class="login-form--subtitle">
+        <p>Segunda via de boletos (BB)</p>
+      </div>
     </div>
-    <div>
-      <label for="name">CNPJ</label>
-      <input type="text" id="registration_cnpj" required [(ngModel)]="login.registration" name='registration'>
+    <div class="col-12 login-form--form">
+      <form>
+        <div class="form-group">
+          <label for="registration_cpf">CPF</label>
+          <input type="text" class="form-control" id="registration_cpf" placeholder="Digite o CPF">
+        </div>
+        <div class="form-group">
+          <label for="registration_cnpj">CNPJ</label>
+          <input type="text" class="form-control" id="registration_cnpj" placeholder="Digite o CNPJ">
+        </div>
+      </form>
     </div>
-    <button type="submit">Limpar</button>
-    <button type="submit">Pesquisar</button>
-  </form>
+  </div>
 </div>

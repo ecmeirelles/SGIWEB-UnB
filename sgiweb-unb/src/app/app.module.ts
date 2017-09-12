@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MdButtonModule, MdInputModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -21,9 +22,8 @@ import { LoginService } from './login/shared/login.service';
     FormsModule,
     HttpModule,
     routing,
-    BrowserAnimationsModule,
-    MdButtonModule,
-    MdInputModule
+    NgbModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
