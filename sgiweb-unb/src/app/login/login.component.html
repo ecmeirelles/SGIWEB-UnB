@@ -1,6 +1,6 @@
 <div class="login-form--content">
   <div class="row">
-    <div class="col-12 login-form--header">
+    <div class="col-12 text-center login-form--header">
       <div class="login-form--title">
         <h4>Sistema de Gestão Patrimonial</h4>
       </div>
@@ -9,14 +9,23 @@
       </div>
     </div>
     <div class="col-12 login-form--form">
-      <form>
-        <div class="form-group">
-          <label for="registration_cpf">CPF</label>
-          <input type="text" class="form-control" id="registration_cpf" placeholder="Digite o CPF">
-        </div>
-        <div class="form-group">
-          <label for="registration_cnpj">CNPJ</label>
-          <input type="text" class="form-control" id="registration_cnpj" placeholder="Digite o CNPJ">
+      <form (ngSubmit)="search()">
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
+            <label for="registration_cpf">Digite o CPF</label>
+            <input type="text" class="form-control" id="registration_cpf" [(ngModel)]="login.cpf" name="registration_cpf">
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center form-divider">
+            <p>ou</p>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
+            <label for="registration_cnpj">Digite o CNPJ</label>
+            <input type="text" class="form-control" id="registration_cnpj" [(ngModel)]="login.cnpj" name="registration_cnpj">
+          </div>
+          <div class="col-12 text-center login-form--buttons">
+            <button type="reset" class="btn btn-form btn-clear" (click)="reset()">Limpar</button>
+            <button type="submit" class="btn btn-form btn-search">Pesquisar</button>
+          </div>
         </div>
       </form>
     </div>

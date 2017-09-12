@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import {FormControl, Validators} from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import {FormControl, Validators} from "@angular/forms";
 
-import { LoginService } from './shared/login.service';
+import { LoginService } from "./shared/login.service";
 import {Login} from "./shared/login";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 
 export class LoginComponent implements OnInit {
@@ -22,12 +22,13 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  registrationFormControl = new FormControl('', [
-    Validators.required
-  ]);
-
-  save() {
+  search() {
     var result = this.loginService.authenticate(this.login);
-    result.subscribe(data => this.router.navigate(['/']));
+    result.subscribe(data => this.router.navigate(["/"]));
+  }
+
+  reset() {
+    this.login.cpf = "";
+    this.login.cnpj = "";
   }
 }

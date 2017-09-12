@@ -1,4 +1,5 @@
 export class Login {
   id: number;
-  registration: string;
+  cpf: string;
+  cnpj: string;
 }

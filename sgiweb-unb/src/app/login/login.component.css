@@ -1,14 +1,57 @@
-.container {
+.login-form--content {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  align-items: center;
+
+  margin: auto;
+  width: 60%;
   height: 100%;
-  width: 100%;
 }
 
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+.login-form--header {
+  margin: 1em 0;
 }
 
-.example-full-width {
-  width: 100%;
+.login-form--title {
+  color: #004080;
+}
+
+.login-form--buttons {
+  margin-top: 3em;
+}
+
+.form-divider {
+  font-weight: bold;
+  height: 80%;
+  margin: auto;
+}
+
+/* Buttons */
+.btn-form {
+  border-radius: 3px;
+  cursor: pointer;
+}
+.btn-form:hover {
+  box-shadow: 5px 5px 2px #888888;
+}
+
+.btn-clear {
+  text-transform: uppercase;
+  background-color: #FFFFFF;
+  border: 1px solid #292B2C;
+  margin-right: 0.5em;
+}
+
+.btn-search {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  background-color: #004080;
+  margin-left: 0.5em;
+}
+
+@media only screen and (max-width: 800px) {
+  .login-form--content {
+    width: 80%;
+  }
 }
