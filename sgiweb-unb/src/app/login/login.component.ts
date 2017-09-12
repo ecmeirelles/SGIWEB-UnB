@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
   login: Login = new Login();
 
+  public cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
+  public cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/]
+
   constructor(
     //Dependencies
     private loginService: LoginService,

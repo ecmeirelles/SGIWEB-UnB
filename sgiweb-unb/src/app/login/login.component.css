@@ -50,6 +50,7 @@
   margin-left: 0.5em;
 }
 
+/* Responsiveness */
 @media only screen and (max-width: 800px) {
   .login-form--content {
     width: 80%;

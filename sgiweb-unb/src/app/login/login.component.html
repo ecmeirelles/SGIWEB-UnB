@@ -13,14 +13,16 @@
         <div class="row">
           <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
             <label for="registration_cpf">Digite o CPF</label>
-            <input type="text" class="form-control" id="registration_cpf" [(ngModel)]="login.cpf" name="registration_cpf">
+            <input [(ngModel)]="login.cpf"
+              type="text" class="form-control" id="registration_cpf" name="registration_cpf" [textMask]="{mask: cpfMask}">
           </div>
           <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center form-divider">
             <p>ou</p>
           </div>
           <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
             <label for="registration_cnpj">Digite o CNPJ</label>
-            <input type="text" class="form-control" id="registration_cnpj" [(ngModel)]="login.cnpj" name="registration_cnpj">
+            <input [(ngModel)]="login.cnpj"
+              type="text" class="form-control" id="registration_cnpj" name="registration_cnpj" [textMask]="{mask: cnpjMask}">
           </div>
           <div class="col-12 text-center login-form--buttons">
             <button type="reset" class="btn btn-form btn-clear" (click)="reset()">Limpar</button>
