@@ -1,3 +1,10 @@
+.card {
+  background: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  min-height: 50px;
+  padding: 1.5em;
+}
+
 .login-form--content {
   display: flex;
   flex-flow: row wrap;
@@ -10,7 +17,7 @@
 }
 
 .login-form--header {
-  margin: 1em 0;
+  margin: 1em 0 3em;
 }
 
 .login-form--title {
@@ -52,7 +59,16 @@
 
 /* Responsiveness */
 @media only screen and (max-width: 800px) {
+  .card {
+    padding: 1em;
+  }
   .login-form--content {
-    width: 80%;
+    width: 90%;
+  }
+  .login-form--buttons {
+    margin-top: 2em;
+  }
+  .login-form--header {
+    margin-bottom: 2em;
   }
 }

@@ -1,35 +1,37 @@
 <div class="login-form--content">
-  <div class="row">
-    <div class="col-12 text-center login-form--header">
-      <div class="login-form--title">
-        <h4>Sistema de Gestão Patrimonial</h4>
-      </div>
-      <div class="login-form--subtitle">
-        <p>Segunda via de boletos (BB)</p>
-      </div>
-    </div>
-    <div class="col-12 login-form--form">
-      <form (ngSubmit)="search()">
-        <div class="row">
-          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
-            <label for="registration_cpf">Digite o CPF</label>
-            <input [(ngModel)]="login.cpf"
-              type="text" class="form-control" id="registration_cpf" name="registration_cpf" [textMask]="{mask: cpfMask}">
-          </div>
-          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center form-divider">
-            <p>ou</p>
-          </div>
-          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
-            <label for="registration_cnpj">Digite o CNPJ</label>
-            <input [(ngModel)]="login.cnpj"
-              type="text" class="form-control" id="registration_cnpj" name="registration_cnpj" [textMask]="{mask: cnpjMask}">
-          </div>
-          <div class="col-12 text-center login-form--buttons">
-            <button type="reset" class="btn btn-form btn-clear" (click)="reset()">Limpar</button>
-            <button type="submit" class="btn btn-form btn-search">Pesquisar</button>
-          </div>
+  <div class="card">
+    <div class="row">
+      <div class="col-12 text-center login-form--header">
+        <div class="login-form--title">
+          <h4>Sistema de Gestão Patrimonial</h4>
         </div>
-      </form>
+        <div class="login-form--subtitle">
+          <p>Segunda via de boletos (BB)</p>
+        </div>
+      </div>
+      <div class="col-12 login-form--form">
+        <form (ngSubmit)="search()">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
+              <label for="registration_cpf">Digite o CPF</label>
+              <input [(ngModel)]="login.cpf"
+                type="text" class="form-control" id="registration_cpf" name="registration_cpf" [textMask]="{mask: cpfMask}">
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center form-divider">
+              <p>ou</p>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
+              <label for="registration_cnpj">Digite o CNPJ</label>
+              <input [(ngModel)]="login.cnpj"
+                type="text" class="form-control" id="registration_cnpj" name="registration_cnpj" [textMask]="{mask: cnpjMask}">
+            </div>
+            <div class="col-12 text-center login-form--buttons">
+              <button type="reset" class="btn btn-form btn-clear" (click)="reset()">Limpar</button>
+              <button type="submit" class="btn btn-form btn-search">Pesquisar</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

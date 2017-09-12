@@ -11,14 +11,16 @@
 }
 
 .main-header {
+  color: #FFFFFF;
+  background-color: #004080;
   width: 100%;
-  height: 12%;
+  height: 11%;
 }
 
 .main-container {
   background-color: #E9E9E9;
   width: 100%;
-  height: 88%;
+  height: 89%;
 }
 
 /* Text */
