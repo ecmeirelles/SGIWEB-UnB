@@ -10,13 +10,12 @@ import { Observable } from 'rxjs/Rx';
 export class LoginService {
 
   // API URL
-  private url: string = "http://localhost:3000/questions";
+  private url: string = 'http://localhost:3000/questions';
 
   constructor(private http: Http) { }
 
-  // Authenticate the user
-  authenticate(registration){
-    return this.http.post(this.url, {'registration': registration})
-      .map(res => res.json());
+  // Search bank slips based on user registration number
+  searchBankSlips(registration){
+    // return this.http.post(this.url, {'registration': registration}).map(res => res.json());
   }
 }

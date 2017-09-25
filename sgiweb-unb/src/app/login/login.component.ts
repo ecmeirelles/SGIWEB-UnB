@@ -65,9 +65,10 @@ export class LoginComponent implements OnInit {
     if(this.login.registration === undefined || this.login.registration === '' || this.login.registration === null) {
       this.submitError = true;
       this.errorMessage = 'Preencha o formulário com seu CPF ou CNPJ';
-    } else if(this.isValidCPF || this.isValidCNPJ) {
-      // let result = this.loginService.authenticate(this.login);
-      // result.subscribe(data => this.router.navigate(["/"]));
+    } else if(!this.isBothEmpty && this.isValidCPF && this.isValidCNPJ) {
+      // let registration = this.login.registration.replace(/[^\d]+/g,'');
+      // let result = this.loginService.searchBankSlips(registration);
+      //result.subscribe(data => this.router.navigate(["/"]));
     }
   }
 
