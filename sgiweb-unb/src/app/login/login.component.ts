@@ -46,11 +46,19 @@ export class LoginComponent implements OnInit {
   setEmptyCPF(value) {
     this.isCPF_Empty = value;
     this.isBothEmpty = value;
+
+    if (value === false) {
+      this.submitError = false;
+    }
   }
 
   setEmptyCNPJ(value) {
     this.isCNPJ_Empty = value;
      this.isBothEmpty = value;
+
+     if (value === false) {
+      this.submitError = false;
+    }
   }
 
   search() {
