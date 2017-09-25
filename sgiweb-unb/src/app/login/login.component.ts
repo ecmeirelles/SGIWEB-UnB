@@ -18,6 +18,13 @@ export class LoginComponent implements OnInit {
   private isValidCPF = true;
   private isValidCNPJ = true;
 
+  private isCPF_Empty = true;
+  private isCNPJ_Empty = true;
+  private isBothEmpty = true;
+
+  private submitError = false;
+  private errorMessage = '';
+
   public cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
   public cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/]
 
@@ -36,14 +43,30 @@ export class LoginComponent implements OnInit {
     return !this.isValidCNPJ;
   }
 
+  setEmptyCPF(value) {
+    this.isCPF_Empty = value;
+    this.isBothEmpty = value;
+  }
+
+  setEmptyCNPJ(value) {
+    this.isCNPJ_Empty = value;
+     this.isBothEmpty = value;
+  }
+
   search() {
-    let result = this.loginService.authenticate(this.login);
-    result.subscribe(data => this.router.navigate(["/"]));
+    if(this.login.registration === undefined || this.login.registration === '' || this.login.registration === null) {
+      this.submitError = true;
+      this.errorMessage = 'Preencha o formulário com seu CPF ou CNPJ';
+    } else if(this.isValidCPF || this.isValidCNPJ) {
+      // let result = this.loginService.authenticate(this.login);
+      // result.subscribe(data => this.router.navigate(["/"]));
+    }
   }
 
   reset() {
-    this.login.cpf = "";
-    this.login.cnpj = "";
+    this.login.registration = '';
+    this.setEmptyCPF(true);
+    this.setEmptyCNPJ(true);
   }
 
   // @Copyright to http://www.devmedia.com.br/validar-cpf-com-javascript/23916
@@ -54,12 +77,20 @@ export class LoginComponent implements OnInit {
     if (strCPF !== null) {
       // Removing everything which is not number
       strCPF = strCPF.replace(/[^\d]+/g,'');
-      // Validating just if user has typed all 11 numbers
-      if (strCPF.length === 11) {
+
+      if(strCPF.length === 0) {
+        this.setEmptyCPF(true);
+      } else {
+        this.setEmptyCPF(false);
+
         let sum = 0;
         let remainder = 0;
 
-        if (strCPF == "00000000000") {
+        if (strCPF === "00000000000" || strCPF === "11111111111" ||
+            strCPF === "22222222222" || strCPF === "33333333333" ||
+            strCPF === "44444444444" || strCPF === "55555555555" ||
+            strCPF === "66666666666" || strCPF === "77777777777" ||
+            strCPF === "88888888888" || strCPF === "99999999999") {
           this.isValidCPF = false;
         }
 
@@ -68,10 +99,10 @@ export class LoginComponent implements OnInit {
         }
 
         remainder = (sum * 10) % 11;
-        if ((remainder == 10) || (remainder == 11)) {
+        if ((remainder === 10) || (remainder === 11)) {
           remainder = 0;
         }
-        if (remainder != parseInt(strCPF.substring(9, 10))) {
+        if (remainder !== parseInt(strCPF.substring(9, 10))) {
           this.isValidCPF = false;
         }
 
@@ -81,10 +112,10 @@ export class LoginComponent implements OnInit {
         }
 
         remainder = (sum * 10) % 11;
-        if ((remainder == 10) || (remainder == 11)) {
+        if ((remainder === 10) || (remainder === 11)) {
           remainder = 0;
         }
-        if (remainder != parseInt(strCPF.substring(10, 11))) {
+        if (remainder !== parseInt(strCPF.substring(10, 11))) {
           this.isValidCPF = false;
         }
       }
@@ -100,10 +131,17 @@ export class LoginComponent implements OnInit {
     if(strCNPJ !== null) {
       // Removing everything which is not number
       strCNPJ = strCNPJ.replace(/[^\d]+/g,'');
-      // Validating just if user has typed all 14 numbers
-      if (strCNPJ.length === 14) {
 
-        if (strCNPJ == "00000000000000") {
+      if(strCNPJ.length === 0) {
+        this.setEmptyCNPJ(true);
+      } else {
+        this.setEmptyCNPJ(false);
+
+        if (strCNPJ === "00000000000000" || strCNPJ === "11111111111111" ||
+          strCNPJ === "22222222222222" || strCNPJ === "33333333333333" ||
+          strCNPJ === "44444444444444" || strCNPJ === "55555555555555" ||
+          strCNPJ === "66666666666666" || strCNPJ === "77777777777777" ||
+          strCNPJ === "88888888888888" || strCNPJ === "99999999999999") {
           this.isValidCNPJ = false;
         }
 

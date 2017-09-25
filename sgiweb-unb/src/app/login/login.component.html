@@ -9,12 +9,16 @@
           <p>Segunda via de boletos (BB)</p>
         </div>
       </div>
+      <div *ngIf="submitError" class="alert alert-danger fullWidth" role="alert">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        {{ errorMessage }}.
+      </div>
       <div class="col-12 login-form--form">
         <form (ngSubmit)="search()">
           <div class="row">
-            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
+            <div *ngIf="isCNPJ_Empty" class="{{isCPF_Empty ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
               <md-form-field class="fullWidth">
-                <input mdInput [(ngModel)]="login.cpf" (ngModelChange)="validateCPF($event)"
+                <input mdInput [(ngModel)]="login.registration" (ngModelChange)="validateCPF($event)"
                   placeholder="Digite o CPF" type="text" class="form-control" [errorStateMatcher]="CPF_Error"
                   id="registration_cpf" name="registration_cpf" [textMask]="{mask: cpfMask}">
                 <md-error>
@@ -22,12 +26,12 @@
                 </md-error>
               </md-form-field>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center form-divider">
+            <div *ngIf="isBothEmpty" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center form-divider">
               <p>ou</p>
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group">
+            <div *ngIf="isCPF_Empty" class="{{isCNPJ_Empty ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
               <md-form-field class="fullWidth">
-                <input mdInput [(ngModel)]="login.cnpj" (ngModelChange)="validateCNPJ($event)"
+                <input mdInput [(ngModel)]="login.registration" (ngModelChange)="validateCNPJ($event)"
                   placeholder="Digite o CNPJ" type="text" class="form-control" [errorStateMatcher]="CNPJ_Error"
                   id="registration_cnpj" name="registration_cnpj" [textMask]="{mask: cnpjMask}">
                 <md-error>
