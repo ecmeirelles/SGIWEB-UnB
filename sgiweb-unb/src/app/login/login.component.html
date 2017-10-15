@@ -1,0 +1,51 @@
+<div class="login-form--content">
+  <div class="card">
+    <div class="row">
+      <div class="col-12 text-center login-form--header">
+        <div class="login-form--title">
+          <h4>Sistema de Gestão Patrimonial</h4>
+        </div>
+        <div class="login-form--subtitle">
+          <p>Segunda via de boletos (BB)</p>
+        </div>
+      </div>
+      <div *ngIf="submitError" class="alert alert-danger fullWidth" role="alert">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        {{ errorMessage }}.
+      </div>
+      <div class="col-12 login-form--form">
+        <form (ngSubmit)="search()">
+          <div class="row">
+            <div *ngIf="isCNPJ_Empty" class="{{isCPF_Empty ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
+              <mat-form-field class="fullWidth">
+                <input matInput [(ngModel)]="login.registration" (ngModelChange)="validateCPF($event)"
+                  placeholder="Digite o CPF" type="text" class="form-control" [errorStateMatcher]="CPF_Error"
+                  id="registration_cpf" name="registration_cpf" [textMask]="{mask: cpfMask}">
+                <mat-error>
+                  Número de CPF incorreto.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div *ngIf="isBothEmpty" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center form-divider">
+              <p>ou</p>
+            </div>
+            <div *ngIf="isCPF_Empty" class="{{isCNPJ_Empty ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
+              <mat-form-field class="fullWidth">
+                <input matInput [(ngModel)]="login.registration" (ngModelChange)="validateCNPJ($event)"
+                  placeholder="Digite o CNPJ" type="text" class="form-control" [errorStateMatcher]="CNPJ_Error"
+                  id="registration_cnpj" name="registration_cnpj" [textMask]="{mask: cnpjMask}">
+                <mat-error>
+                  Número de CNPJ incorreto.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12 text-center login-form--buttons">
+              <button type="reset" class="btn btn-form btn-clear" (click)="reset()">Limpar</button>
+              <button type="submit" class="btn btn-form btn-search">Pesquisar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
