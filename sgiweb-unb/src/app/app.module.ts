@@ -2,8 +2,9 @@ import 'hammerjs';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
 
 import { TextMaskModule } from 'angular2-text-mask';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -23,6 +24,7 @@ import { LoginService } from './login/shared/login.service';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     TextMaskModule,
     routing,
@@ -30,7 +32,10 @@ import { LoginService } from './login/shared/login.service';
     MaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

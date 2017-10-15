@@ -17,27 +17,27 @@
         <form (ngSubmit)="search()">
           <div class="row">
             <div *ngIf="isCNPJ_Empty" class="{{isCPF_Empty ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
-              <md-form-field class="fullWidth">
-                <input mdInput [(ngModel)]="login.registration" (ngModelChange)="validateCPF($event)"
+              <mat-form-field class="fullWidth">
+                <input matInput [(ngModel)]="login.registration" (ngModelChange)="validateCPF($event)"
                   placeholder="Digite o CPF" type="text" class="form-control" [errorStateMatcher]="CPF_Error"
                   id="registration_cpf" name="registration_cpf" [textMask]="{mask: cpfMask}">
-                <md-error>
+                <mat-error>
                   Número de CPF incorreto.
-                </md-error>
-              </md-form-field>
+                </mat-error>
+              </mat-form-field>
             </div>
             <div *ngIf="isBothEmpty" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center form-divider">
               <p>ou</p>
             </div>
             <div *ngIf="isCPF_Empty" class="{{isCNPJ_Empty ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
-              <md-form-field class="fullWidth">
-                <input mdInput [(ngModel)]="login.registration" (ngModelChange)="validateCNPJ($event)"
+              <mat-form-field class="fullWidth">
+                <input matInput [(ngModel)]="login.registration" (ngModelChange)="validateCNPJ($event)"
                   placeholder="Digite o CNPJ" type="text" class="form-control" [errorStateMatcher]="CNPJ_Error"
                   id="registration_cnpj" name="registration_cnpj" [textMask]="{mask: cnpjMask}">
-                <md-error>
+                <mat-error>
                   Número de CNPJ incorreto.
-                </md-error>
-              </md-form-field>
+                </mat-error>
+              </mat-form-field>
             </div>
             <div class="col-12 text-center login-form--buttons">
               <button type="reset" class="btn btn-form btn-clear" (click)="reset()">Limpar</button>

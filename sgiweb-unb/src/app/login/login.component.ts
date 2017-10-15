@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import {FormControl, FormGroupDirective, NgForm} from "@angular/forms";
+import {FormControl, FormGroupDirective, NgForm, } from "@angular/forms";
+import {ErrorStateMatcher} from "@angular/material";
 
 import { LoginService } from "./shared/login.service";
 import {Login} from "./shared/login";
@@ -34,14 +35,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { }
-
-  CPF_Error = (control: FormControl, form: FormGroupDirective | NgForm): boolean => {
-    return !this.isValidCPF;
-  }
-
-  CNPJ_Error = (control: FormControl, form: FormGroupDirective | NgForm): boolean => {
-    return !this.isValidCNPJ;
-  }
 
   setEmptyCPF(value) {
     this.isCPF_Empty = value;
@@ -77,6 +70,18 @@ export class LoginComponent implements OnInit {
     this.setEmptyCPF(true);
     this.setEmptyCNPJ(true);
   }
+
+  CPF_Error: ErrorStateMatcher = {
+    isErrorState: (control: FormControl) => {
+      return !this.isValidCPF;
+    }
+  };
+
+  CNPJ_Error: ErrorStateMatcher = {
+    isErrorState: (control: FormControl) => {
+      return !this.isValidCNPJ;
+    }
+  };
 
   // @Copyright to http://www.devmedia.com.br/validar-cpf-com-javascript/23916
   validateCPF(strCPF) {
@@ -129,6 +134,7 @@ export class LoginComponent implements OnInit {
         }
       }
     }
+
     return this.isValidCPF;
   }
 
