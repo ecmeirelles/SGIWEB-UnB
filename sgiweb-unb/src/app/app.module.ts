@@ -15,11 +15,13 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/shared/login.service';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

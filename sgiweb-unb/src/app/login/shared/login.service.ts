@@ -1,21 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-
+import { Component, Input } from '@angular/core';
+import { Injectable }     from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class LoginService {
 
-  // API URL
-  private url: string = 'http://localhost:3000/questions';
+  constructor(private http: Http) {
 
-  constructor(private http: Http) { }
+  }
 
-  // Search bank slips based on user registration number
-  searchBankSlips(registration){
-    // return this.http.post(this.url, {'registration': registration}).map(res => res.json());
-  }
+  public searchBankSlips(registration): Observable<any> {
+    return this.http.get("./sgiweb.json")
+                    .map((res:any) => res.json())
+                    .catch((error:any) => {
+                      console.log(error);
+                      return Observable.of(undefined);
+                    });
+
+  }
 }
