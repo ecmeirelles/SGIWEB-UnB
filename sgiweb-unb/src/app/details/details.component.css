@@ -3,6 +3,16 @@
   width: 100%;
 }
 
+.right-align {
+  text-align: right;
+}
+
+.bottom-align {
+  align-content: flex-end;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
 /* Components */
 .card {
   background: #FFFFFF;
@@ -10,6 +20,20 @@
   min-height: 50px;
   padding: 1.5em 1em 1em;
   width: 100%;
+}
+
+.card--info {
+  background: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  min-height: 40px;
+  padding: 1em;
+
+  margin-top: 0.5em;
+  width: 100%;
+}
+
+.card--info:first-of-type {
+  margin-top: 1em;
 }
 
 .details--go-back {
@@ -65,6 +89,44 @@
   font-size: 0.8em;
   padding: 1.5em 0 0 1.2em;
   text-align: center;
+}
+
+.details--info {
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+.details--info__title {
+  font-weight: bold;
+}
+
+.details--info__subtitle {
+  margin: 0;
+}
+
+/* Buttons */
+.btn {
+  cursor: pointer;
+}
+
+.btn-form {
+  border-radius: 3px;
+}
+.btn-form:hover {
+  box-shadow: 5px 5px 2px #888888;
+}
+
+.btn-back {
+  text-transform: uppercase;
+  background-color: #E9E9E9;
+  border: 1px solid #292B2C;
+}
+
+.btn-bankSlips {
+  color: #FFFFFF;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  background-color: #006633;
 }
 
 /* Responsiveness */
