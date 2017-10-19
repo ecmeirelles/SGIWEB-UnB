@@ -1,7 +1,7 @@
 import 'hammerjs';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
@@ -36,7 +36,8 @@ import { DetailsComponent } from './details/details.component';
   ],
   providers: [
     LoginService,
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
+    {provide: LOCALE_ID, useValue: "pt-BR"}
   ],
   bootstrap: [AppComponent]
 })

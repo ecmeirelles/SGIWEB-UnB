@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
       let registration = this.login.registration.replace(/[^\d]+/g,'');
       //let result = this.loginService.searchBankSlips(registration);
       let result = this.loginService.getAll();
-      console.log(result)
       this.router.navigate(['/', registration]);
     }
   }

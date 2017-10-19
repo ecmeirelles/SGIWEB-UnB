@@ -32,7 +32,6 @@ export class DetailsComponent implements OnInit {
 
     this.serviceData = await this.loginService.getAll();
     this.renter = this.serviceData.renters[0];
-    console.log(this.renter);
   }
 
   goBack() {
