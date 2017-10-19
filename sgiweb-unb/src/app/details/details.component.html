@@ -4,13 +4,13 @@
       <button type="button" class="btn btn-back" (click)="goBack()">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
       </button>
-      <h5 class="details--go-back__registration">034.576.181-27</h5>
+      <h5 class="details--go-back__registration">{{ registration }}</h5>
     </div>
   </div>
   <div class="card">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <h6 class="details--renter">Inquilino: Elaine Cristina Meirelles Peronico</h6>
+        <h6 class="details--renter">Inquilino: {{ renter.name }}</h6>
         <div class="details--notice">
           <i class="fa fa-info-circle details--notice_icon" aria-hidden="true"></i>
           <p class="details--notice_info">
@@ -20,25 +20,29 @@
       </div>
     </div>
   </div>
-  <div class="card--info">
-    <div class="container details--info">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-          <p class="details--info__title">Aluguel Residencial</p>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 right-align">
-          <p>Contrato: 4062</p>
-        </div>
-      </div>
-      <div class="row bottom-align">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-          <p class="details--info__subtitle">Valor: R$ 3200</p>
-          <p class="details--info__subtitle">Vencimento: 27/10/2017</p>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 right-align">
-          <button type="button" class="btn btn-form btn-bankSlips" (click)="seeBankSlips()">
-            Ver boleto
-          </button>
+  <div class="row">
+    <div *ngFor="let slip of renter.bankSlips" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="card--info">
+        <div class="container details--info">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <p class="details--info__title">{{ slip.reason }}</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 right-align">
+              <p>Contrato: {{ renter.agreement }}</p>
+            </div>
+          </div>
+          <div class="row bottom-align">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <p class="details--info__subtitle">Valor: R$ {{ slip.value }}</p>
+              <p class="details--info__subtitle">Vencimento: {{ slip.dueTo }}</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 right-align">
+              <button type="button" class="btn btn-form btn-bankSlips" (click)="seeBankSlips()">
+                Ver boleto
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -60,7 +60,8 @@ export class LoginComponent implements OnInit {
       this.errorMessage = 'Preencha o formulário com seu CPF ou CNPJ';
     } else if(!this.isBothEmpty && this.isValidCPF && this.isValidCNPJ) {
       let registration = this.login.registration.replace(/[^\d]+/g,'');
-      let result = this.loginService.searchBankSlips(registration);
+      //let result = this.loginService.searchBankSlips(registration);
+      let result = this.loginService.getAll();
       console.log(result)
       this.router.navigate(['/', registration]);
     }
