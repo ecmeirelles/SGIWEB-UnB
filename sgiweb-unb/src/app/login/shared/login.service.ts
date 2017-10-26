@@ -16,4 +16,21 @@ export class LoginService {
       console.log(err);
     });
   }
+
+  public searchByRegistration(registration): Promise<void> {
+    return this.http.get(this.apiHost)
+      .toPromise()
+      .then((response) => {
+        var results = [];
+        const res = response.json().renters;
+        for (var i = 0; i < res.length; i++) {
+          if ((res)[i].registration == registration) {
+            results.push(res[i]);
+          }
+        }
+        return {renters: results};
+      }).catch((err) => {
+      console.log(err);
+    });
+  }
 }

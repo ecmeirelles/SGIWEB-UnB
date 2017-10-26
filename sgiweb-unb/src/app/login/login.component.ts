@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   private submitError = false;
   private errorMessage = '';
+  private noContent = false;
 
   public cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
   public cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/]
@@ -54,15 +55,20 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  search() {
+  async search() {
+    let result: any;
     if(this.login.registration === undefined || this.login.registration === '' || this.login.registration === null) {
       this.submitError = true;
       this.errorMessage = 'Preencha o formulário com seu CPF ou CNPJ';
     } else if(!this.isBothEmpty && this.isValidCPF && this.isValidCNPJ) {
-      let registration = this.login.registration.replace(/[^\d]+/g,'');
-      //let result = this.loginService.searchBankSlips(registration);
-      let result = this.loginService.getAll();
-      this.router.navigate(['/', registration]);
+      const registration = this.login.registration.replace(/[^\d]+/g,'');
+      result = await this.loginService.searchByRegistration(registration);
+
+      if(result.renters.length > 0) {
+        this.router.navigate(['/', registration]);
+      } else {
+        this.noContent = true;
+      }
     }
   }
 
@@ -70,6 +76,7 @@ export class LoginComponent implements OnInit {
     this.login.registration = '';
     this.setEmptyCPF(true);
     this.setEmptyCNPJ(true);
+    this.noContent = false;
   }
 
   CPF_Error: ErrorStateMatcher = {

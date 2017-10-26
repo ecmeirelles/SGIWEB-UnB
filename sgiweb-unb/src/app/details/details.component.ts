@@ -22,15 +22,14 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(async params => {
       if(params['registration'].length === 11) {
         this.registration = this.maskCPF(params['registration']);
       } else {
         this.registration = this.maskCNPJ(params['registration']);
       }
     });
-
-    this.serviceData = await this.loginService.getAll();
+    this.serviceData = await this.loginService.searchByRegistration(this.registration.replace(/[^\d]+/g,''));
     this.renter = this.serviceData.renters[0];
   }
 
