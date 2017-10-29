@@ -16,10 +16,10 @@
       <div class="col-12 login-form--form">
         <form (ngSubmit)="search()">
           <div class="row">
-            <div *ngIf="isCNPJ_Empty" class="{{isCPF_Empty ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
+            <div *ngIf="isEmptyCNPJ" class="{{isEmptyCPF ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
               <mat-form-field class="fullWidth">
                 <input matInput [(ngModel)]="login.registration" (ngModelChange)="validateCPF($event)"
-                  placeholder="Digite o CPF" type="text" class="form-control" [errorStateMatcher]="CPF_Error"
+                  placeholder="Digite o CPF" type="text" class="form-control" [errorStateMatcher]="ErrorCPF"
                   id="registration_cpf" name="registration_cpf" [textMask]="{mask: cpfMask}">
                 <mat-error>
                   Número de CPF incorreto.
@@ -29,10 +29,10 @@
             <div *ngIf="isBothEmpty" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center form-divider">
               <p>ou</p>
             </div>
-            <div *ngIf="isCPF_Empty" class="{{isCNPJ_Empty ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
+            <div *ngIf="isEmptyCPF" class="{{isEmptyCNPJ ? 'col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group'}}">
               <mat-form-field class="fullWidth">
                 <input matInput [(ngModel)]="login.registration" (ngModelChange)="validateCNPJ($event)"
-                  placeholder="Digite o CNPJ" type="text" class="form-control" [errorStateMatcher]="CNPJ_Error"
+                  placeholder="Digite o CNPJ" type="text" class="form-control" [errorStateMatcher]="ErrorCNPJ"
                   id="registration_cnpj" name="registration_cnpj" [textMask]="{mask: cnpjMask}">
                 <mat-error>
                   Número de CNPJ incorreto.
@@ -47,18 +47,8 @@
         </form>
       </div>
     </div>
-    <div *ngIf="noContent" class="card noContent--response">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h6 class="noContent--response__name">Não há resultados encontrados para a busca</h6>
-          <div class="noContent--notice">
-            <i class="fa fa-info-circle noContent--notice_icon" aria-hidden="true"></i>
-            <p class="noContent--notice_info">
-              Caso o boleto não seja exibido entre em contato com a S.G.P pelo telefone (61) 3107-0279 ou (61) 3107-0286.
-            </p>
-          </div>
-        </div>
-      </div>
+    <div *ngIf="noContent">
+      <no-content></no-content>
     </div>
   </div>
 </div>
