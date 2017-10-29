@@ -69,6 +69,8 @@ export class LoginComponent implements OnInit {
     if(!!cpf) {
       this.setEmptyCPF(cpf.replace(/[^\d]+/g,'').length === 0);
       this.isValidCPF = this.validation.validateCPF(cpf);
+    } else {
+      this.setEmptyCPF(true);
     }
   }
 
@@ -76,6 +78,8 @@ export class LoginComponent implements OnInit {
     if(!!cnpj) {
       this.setEmptyCNPJ(cnpj.replace(/[^\d]+/g,'').length === 0);
       this.isValidCNPJ = this.validation.validateCNPJ(cnpj);
+    } else {
+      this.setEmptyCNPJ(true);
     }
   }
 
