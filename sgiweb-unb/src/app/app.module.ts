@@ -12,7 +12,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { MaterialModule } from './material.module';
 import { routing } from './app.routing';
 
-//Service
+//Services
 import { LoginService } from './services/login.service';
 import { Validation } from './services/validation.service';
 
